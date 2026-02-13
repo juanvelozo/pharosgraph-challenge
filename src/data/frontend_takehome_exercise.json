@@ -1,0 +1,72 @@
+{
+  "analysis": {
+    "id": "abc-123",
+    "ad_text": "Our plan will create 50,000 new jobs in the first year, rebuild crumbling infrastructure, and ensure every family has access to affordable healthcare. The other side has no plan — just empty promises and failed policies. It's time for real change.",
+    "overall_score": 72,
+    "dimensions": [
+      {
+        "name": "Hook",
+        "score": 85,
+        "description": "Opening grabs attention effectively"
+      },
+      {
+        "name": "Credibility",
+        "score": 54,
+        "description": "Claims need stronger evidence"
+      },
+      {
+        "name": "Emotional Appeal",
+        "score": 78,
+        "description": "Strong emotional connection"
+      },
+      {
+        "name": "Memorability",
+        "score": 65,
+        "description": "Some memorable phrases, could be stronger"
+      },
+      {
+        "name": "Shareability",
+        "score": 71,
+        "description": "Likely to be shared in supportive circles"
+      }
+    ],
+    "flags": [
+      {
+        "type": "risk",
+        "severity": "high",
+        "category": "fact_check_vulnerability",
+        "title": "Unsubstantiated job creation claim",
+        "description": "The '50,000 new jobs' figure has no cited source and is vulnerable to fact-checking",
+        "text_span": {
+          "start": 21,
+          "end": 54
+        },
+        "suggestion": "Add a credible source or soften to 'up to 50,000'"
+      },
+      {
+        "type": "risk",
+        "severity": "medium",
+        "category": "backlash_potential",
+        "title": "Negative attack framing",
+        "description": "Direct attack on opposition ('no plan, empty promises') may alienate moderate viewers",
+        "text_span": {
+          "start": 151,
+          "end": 219
+        },
+        "suggestion": "Reframe as contrast rather than attack"
+      },
+      {
+        "type": "opportunity",
+        "severity": "low",
+        "category": "audience_engagement",
+        "title": "Strong closing call-to-action",
+        "description": "'It's time for real change' is a clear, memorable CTA",
+        "text_span": {
+          "start": 220,
+          "end": 246
+        },
+        "suggestion": "Consider reinforcing with a specific next action"
+      }
+    ]
+  }
+}
