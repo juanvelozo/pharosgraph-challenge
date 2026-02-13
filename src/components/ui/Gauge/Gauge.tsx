@@ -1,5 +1,5 @@
-import { memo } from "react";
-import { motion } from "framer-motion";
+import { memo, useEffect, useRef, useState } from "react";
+import { animate, motion } from "framer-motion";
 
 export type GaugeVariant = "success" | "warning" | "danger";
 
@@ -46,6 +46,22 @@ const Gauge = memo(function Gauge({
 
   const { svg: svgSize, text: textSize } = sizeClasses[size];
 
+  const [displayValue, setDisplayValue] = useState(0);
+  const fromRef = useRef(0);
+
+  useEffect(() => {
+    const target = Math.round(clamped);
+    const controls = animate(fromRef.current, target, {
+      duration: 0.8,
+      ease: [0.22, 0.61, 0.36, 1],
+      onUpdate: (latest) => setDisplayValue(Math.round(latest)),
+      onComplete: () => {
+        fromRef.current = target;
+      },
+    });
+    return () => controls.stop();
+  }, [clamped]);
+
   return (
     <div className={`relative inline-flex items-center justify-center ${className}`}>
       <svg className={`${svgSize} -rotate-90`} viewBox="0 0 100 100">
@@ -73,8 +89,8 @@ const Gauge = memo(function Gauge({
         />
       </svg>
       {showValue && (
-        <span className={`absolute ${textSize} font-bold text-gray-900 dark:text-white`}>
-          {Math.round(value)}
+        <span className={`absolute ${textSize} font-bold tabular-nums text-gray-900 dark:text-white`}>
+          {displayValue}
         </span>
       )}
     </div>
