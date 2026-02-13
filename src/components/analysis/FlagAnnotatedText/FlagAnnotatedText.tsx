@@ -106,7 +106,7 @@ function FlagDetails({ flag }: { flag: Flag }) {
         {flag.description}
       </p>
       <p className="text-sm text-gray-500 dark:text-gray-400">
-        <span className="font-semibold text-gray-700">Suggestion:</span> {flag.suggestion}
+        <span className="font-semibold text-gray-700 dark:text-gray-300">Suggestion:</span> {flag.suggestion}
       </p>
     </div>
   );

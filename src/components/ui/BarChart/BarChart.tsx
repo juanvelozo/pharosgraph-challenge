@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useTheme } from "../../../hooks/useTheme.ts";
 
 export interface BarChartDataItem {
   label: string;
@@ -26,6 +27,8 @@ const BarChart = memo(function BarChart({
   barColor = "hsl(var(--chart-color, 217 91% 60%))",
   maxValue,
 }: BarChartProps) {
+  const theme = useTheme();
+
   const max = maxValue ?? Math.max(...data.map((d) => d.value), 100);
 
   return (
@@ -42,7 +45,7 @@ const BarChart = memo(function BarChart({
             dataKey="label"
             width={100}
             style={{ marginRight: 20 }}
-            tick={{ fontSize: 12 }}
+            tick={{ fontSize: 12, fill: theme === "light" ? "black" : "white" }}
             axisLine={false}
             tickLine={false}
           />
@@ -70,7 +73,7 @@ const BarChart = memo(function BarChart({
           />
           <Bar
             dataKey="value"
-            background={{ fill: 'rgba(0,0,0,0.06)', radius: 20 }}
+            background={{ fill: theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)", radius: 20 }}
             fill={barColor}
             radius={[20, 20, 20, 20]}
             maxBarSize={20}

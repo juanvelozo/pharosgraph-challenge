@@ -5,7 +5,6 @@ import AnalysisScoreDisplay from "../../components/analysis/AnalysisScoreDisplay
 import DimensionScoresChart from "../../components/analysis/DimensionScoresChart/DimensionScoresChart.tsx";
 import FlagAnnotatedText from "../../components/analysis/FlagAnnotatedText/FlagAnnotatedText.tsx";
 import FlagCardsList from "../../components/analysis/FlagCardsList/FlagCardsList.tsx";
-import Card from "../../components/ui/Card/Card.tsx";
 
 function PoliticalAdDashboard() {
   const { data, isLoading, error } = useAnalysisData();
@@ -43,19 +42,7 @@ function PoliticalAdDashboard() {
 
   return (
     <div className="mx-auto max-w-7xl py-4 md:py-6 lg:py-8 space-y-4">
-      <header>
-        <Card title="Political Ad Scores Dashboard" animationDelay={0.05}>
-
-          {/* <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          Political Ad Scores Dashboard
-        </h1> */}
-          <p className="mt-1 text-gray-600 dark:text-gray-400">
-            Analysis ID: {data.id}
-          </p>
-        </Card>
-      </header>
-
-      <div className="grid gap-4 lg:grid-cols-12">
+      <div className="grid gap-5 lg:grid-cols-12">
         {/* Score - prominent on mobile, sidebar on desktop */}
         <div className="flex w-full lg:col-span-3">
           <AnalysisScoreDisplay score={data.overall_score} />

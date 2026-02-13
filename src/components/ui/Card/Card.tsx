@@ -29,7 +29,7 @@ const Card = memo(function Card({
           damping: 30,
           delay: animationDelay,
         }}
-        className={`rounded-3xl z-0 border border-gray-200 bg-white/50 p-6 dark:border-gray-700 backdrop-blur-lg dark:bg-gray-800 ${className}`}
+        className={`rounded-3xl z-0 border border-gray-200 dark:border-none bg-white/50 p-6 dark:border-gray-700 backdrop-blur-lg dark:bg-gray-800 ${className}`}
       >
         {(title || cta) && (
           <div className="flex items-center justify-between mb-5">

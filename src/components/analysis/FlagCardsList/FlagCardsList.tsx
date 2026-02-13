@@ -119,7 +119,7 @@ function FlagCardsList({ flags }: FlagCardsListProps) {
           }
         >
 
-          <span>Sort by severity</span> <Chevron
+          <span className="text-gray-600 dark:text-gray-200">Sort by severity</span> <Chevron
             direction={sortDirection === "desc" ? "up" : "down"}
             color={sortDirection === "desc" ? "red" : "green"}
             size="md"
