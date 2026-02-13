@@ -42,7 +42,7 @@ const BarChart = memo(function BarChart({
             dataKey="label"
             width={100}
             style={{ marginRight: 20 }}
-            tick={{ fontSize: 10 }}
+            tick={{ fontSize: 12 }}
             axisLine={false}
             tickLine={false}
           />
@@ -70,7 +70,7 @@ const BarChart = memo(function BarChart({
           />
           <Bar
             dataKey="value"
-            background={{ fill: '#eee', radius: 20 }}
+            background={{ fill: 'rgba(0,0,0,0.06)', radius: 20 }}
             fill={barColor}
             radius={[20, 20, 20, 20]}
             maxBarSize={20}
