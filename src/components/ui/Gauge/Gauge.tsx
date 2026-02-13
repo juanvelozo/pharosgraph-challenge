@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { motion } from "framer-motion";
 
 export type GaugeVariant = "success" | "warning" | "danger";
 
@@ -57,7 +58,7 @@ const Gauge = memo(function Gauge({
           strokeWidth={strokeWidth}
           className="text-gray-200 dark:text-gray-700"
         />
-        <circle
+        <motion.circle
           cx="50"
           cy="50"
           r={radius}
@@ -65,8 +66,10 @@ const Gauge = memo(function Gauge({
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}
-          strokeDashoffset={strokeDashoffset}
-          className={`transition-all duration-500 ${variantColors[variant]}`}
+          initial={{ strokeDashoffset: circumference }}
+          animate={{ strokeDashoffset }}
+          transition={{ type: "spring", stiffness: 60, damping: 20 }}
+          className={variantColors[variant]}
         />
       </svg>
       {showValue && (
