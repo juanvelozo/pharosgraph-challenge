@@ -3,6 +3,7 @@ import type { Flag } from "../../../types/analysis.types.ts";
 import { useSortedFlags } from "../../../hooks/useSortedFlags.ts";
 import Card from "../../ui/Card/Card.tsx";
 import Badge, { type BadgeVariant } from "../../ui/Badge/Badge.tsx";
+import Chevron from "../../ui/Chevron/Chevron.tsx";
 import Tabs from "../../ui/Tabs/Tabs.tsx";
 import Table, { type TableColumn } from "../../ui/Table/Table.tsx";
 
@@ -87,26 +88,31 @@ function FlagCardsList({ flags }: FlagCardsListProps) {
   );
 
   const data = activeTab === "risks" ? risks : opportunities;
-  const showSortButton = data.length > 1;
+  const disabledSortButton = data.length <= 1;
 
   return (
     <Card
       title="Flags"
+      className="min-h-92"
       cta={
-        showSortButton ? (
-          <button
-            type="button"
-            onClick={handleSortBySeverity}
-            className="rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
-            title={
-              sortDirection === "desc"
-                ? "Sorted high to low (click for low to high)"
-                : "Sorted low to high (click for high to low)"
-            }
-          >
-            Sort by severity ({sortDirection === "desc" ? "high→low" : "low→high"})
-          </button>
-        ) : undefined
+        <button
+          type="button"
+          disabled={disabledSortButton}
+          onClick={handleSortBySeverity}
+          className="flex items-center gap-2 rounded-lg px-3 py-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
+          title={
+            sortDirection === "desc"
+              ? "Sorted high to low (click for low to high)"
+              : "Sorted low to high (click for high to low)"
+          }
+        >
+
+          <span>Sort by severity</span> <Chevron
+            direction={sortDirection === "desc" ? "up" : "down"}
+            color={sortDirection === "desc" ? "red" : "green"}
+            size="md"
+          />
+        </button>
       }
     >
       <div className="space-y-4">
