@@ -1,4 +1,5 @@
 import { memo, useCallback, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import type { Flag } from "../../../types/analysis.types.ts";
 import { useSortedFlags } from "../../../hooks/useSortedFlags.ts";
 import Card from "../../ui/Card/Card.tsx";
@@ -24,9 +25,19 @@ function severityToBadgeVariant(severity: Flag["severity"]): BadgeVariant {
 
 type SortDirection = "asc" | "desc";
 
+const tabOrder = ["risks", "opportunities"];
+
 function FlagCardsList({ flags }: FlagCardsListProps) {
   const [activeTab, setActiveTab] = useState("risks");
   const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
+  const [direction, setDirection] = useState(1);
+
+  const handleTabChange = useCallback((id: string) => {
+    setDirection(
+      tabOrder.indexOf(activeTab) < tabOrder.indexOf(id) ? 1 : -1
+    );
+    setActiveTab(id);
+  }, [activeTab]);
 
   const sortedFlags = useSortedFlags(flags, "severity");
 
@@ -119,17 +130,31 @@ function FlagCardsList({ flags }: FlagCardsListProps) {
         <Tabs
           tabs={TABS}
           activeTab={activeTab}
-          onTabChange={setActiveTab}
+          onTabChange={handleTabChange}
         />
-        <Table
-          columns={columns}
-          data={data}
-          emptyMessage={
-            activeTab === "risks"
-              ? "No risk flags found"
-              : "No opportunity flags found"
-          }
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, x: direction * 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -16 }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 30,
+            }}
+          >
+            <Table
+              columns={columns}
+              data={data}
+              emptyMessage={
+                activeTab === "risks"
+                  ? "No risk flags found"
+                  : "No opportunity flags found"
+              }
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
     </Card>
   );
