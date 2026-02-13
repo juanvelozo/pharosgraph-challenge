@@ -19,7 +19,7 @@ function AnalysisScoreDisplay({ score }: AnalysisScoreDisplayProps) {
   const variant = scoreToVariant(score);
 
   return (
-    <Card title="Overall Score" className="flex h-full min-h-0 flex-1 flex-col">
+    <Card title="Overall Score" className="flex h-full min-h-0 flex-1 flex-col" animationDelay={0.1}>
       <div className="flex flex-1 flex-col justify-center">
         <div className="flex justify-center">
           <Gauge value={score} size="lg" max={100} variant={variant} strokeWidth={16} />

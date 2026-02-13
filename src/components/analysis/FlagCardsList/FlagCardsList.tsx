@@ -105,6 +105,7 @@ function FlagCardsList({ flags }: FlagCardsListProps) {
     <Card
       title="Flags"
       className="min-h-92"
+      animationDelay={0.25}
       cta={
         <button
           type="button"

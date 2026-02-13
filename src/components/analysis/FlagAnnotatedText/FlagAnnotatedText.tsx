@@ -70,7 +70,7 @@ function FlagDetails({ flag }: { flag: Flag }) {
 
 function FlagAnnotatedText({ spans, onFlagClick }: FlagAnnotatedTextProps) {
   return (
-    <Card title="Annotated Ad Text">
+    <Card title="Annotated Ad Text" animationDelay={0.2}>
       <div className="flex items-center justify-center gap-5">
         <AnimatedQuoteIcon className="shrink-0" />
         <div className="inline text-base leading-relaxed text-gray-800 dark:text-gray-200">

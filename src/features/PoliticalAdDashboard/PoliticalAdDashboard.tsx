@@ -44,7 +44,7 @@ function PoliticalAdDashboard() {
   return (
     <div className="mx-auto max-w-7xl py-4 md:py-6 lg:py-8 space-y-4">
       <header>
-        <Card title="Political Ad Scores Dashboard">
+        <Card title="Political Ad Scores Dashboard" animationDelay={0.05}>
 
           {/* <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           Political Ad Scores Dashboard

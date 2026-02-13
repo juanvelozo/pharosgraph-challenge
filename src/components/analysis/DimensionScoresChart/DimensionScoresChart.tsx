@@ -19,7 +19,7 @@ function DimensionScoresChart({ dimensions }: DimensionScoresChartProps) {
   );
 
   return (
-    <Card title="Dimension Scores">
+    <Card title="Dimension Scores" animationDelay={0.15}>
       <BarChart data={data} maxValue={100} />
     </Card>
   );
