@@ -48,7 +48,7 @@ function Table<T extends object>({
           {data.map((item, i) => (
             <tr
               key={i}
-              className="border-b border-gray-100 last:border-0 dark:border-gray-800"
+              className="border-b bg-white dark:bg-gray-800 border-gray-100 last:border-0 dark:border-gray-800"
             >
               {columns.map((col) => {
                 const value = (item as Record<string, unknown>)[col.key as string];
